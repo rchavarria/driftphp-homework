@@ -2,6 +2,7 @@
 
 namespace App\Controller;
 
+use App\Controller\Transformer\UserTransformer;
 use Domain\Command\PutUser;
 use Domain\Model\User\User;
 use Drift\CommandBus\Bus\CommandBus;
@@ -29,9 +30,9 @@ class PutUserController
     {
         $content = $request->getContent();
         $body = json_decode($content, true);
-        $uid = $request->get('uid');
-        $name = $body['name'];
-        $user = new User($uid, $name);
+        $body['uid'] = $request->get('uid');
+
+        $user = UserTransformer::fromArray($body);
         $command = new PutUser($user);
 
         return $this

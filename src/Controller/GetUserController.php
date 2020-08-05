@@ -2,6 +2,7 @@
 
 namespace App\Controller;
 
+use App\Controller\Transformer\UserTransformer;
 use Domain\Query\GetUser;
 use Drift\CommandBus\Bus\QueryBus;
 use React\Promise\PromiseInterface;
@@ -26,11 +27,9 @@ class GetUserController
         return $this->queryBus
             ->ask(new GetUser($uid))
             ->then(function ($user) {
-                $userAsArray = [
-                    'uid' => $user->getUid(),
-                    'name' => $user->getName()
-                ];
+                $userAsArray = UserTransformer::toArray($user);
                 return new JsonResponse($userAsArray, 200);
             });
     }
+
 }
