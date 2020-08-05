@@ -33,7 +33,9 @@
             "App\\": "src/",
             "Domain\\": "src/Domain",
             "Infrastructure\\": "src",
-            "Drift\\": "Drift/"
+            "Drift\\": "Drift/",
+
+            "Test\\": "test/"
         }
     }
 }
