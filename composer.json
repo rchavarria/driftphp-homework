@@ -24,7 +24,9 @@
         "drift/react-functions": "0.1.*",
         "drift/event-loop-utils": "0.1.*",
 
-        "drift/command-bus-bundle": "0.1.*"
+        "drift/command-bus-bundle": "0.1.*",
+
+        "drift/phpunit-bridge": "0.1.*"
     },
     "autoload": {
         "psr-4": {
