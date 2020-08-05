@@ -2,3 +2,11 @@
 get-user:
   path: /users/{uid}
   controller: App\Controller\GetUserController
+  methods:
+    - GET
+
+put-user:
+  path: /users/{uid}
+  controller: App\Controller\PutUserController
+  methods:
+    - PUT
