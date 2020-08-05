@@ -12,6 +12,9 @@ class GetUserHandler
 
     public function handle(GetUser $getUser): PromiseInterface
     {
-        return resolve(new User($getUser->getUid(), 'Fulanito'));
+        $uid = $getUser->getUid();
+        echo "Searching user [$uid]", PHP_EOL;
+
+        return resolve(new User($uid, 'Fulanito'));
     }
 }

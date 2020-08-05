@@ -13,7 +13,7 @@ class PutUserHandler
     {
         $uid = $putUser->getUser()->getUid();
         $name = $putUser->getUser()->getName();
-        echo "User $uid with name $name will be saved", PHP_EOL;
+        echo "User [$uid] with name [$name] will be saved", PHP_EOL;
 
         return resolve();
     }
