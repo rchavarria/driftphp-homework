@@ -32,3 +32,11 @@ services:
     resource: "%app_path%/src/Domain/QueryHandler/*"
     tags:
       - { name: query_handler }
+
+  #
+  # Command Handlers
+  #
+  Domain\CommandHandler\:
+    resource: "%app_path%/src/Domain/CommandHandler/*"
+    tags:
+      - { name: command_handler }

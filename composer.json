@@ -11,6 +11,8 @@
     ],
     "require": {
         "php": "^7.3",
+        "ext-json": "*",
+
         "symfony/console": "^5.0.0",
         "symfony/framework-bundle": "^5.0.0",
         "symfony/dotenv": "^5.0.0",
