@@ -10,3 +10,9 @@ put-user:
   controller: App\Controller\PutUserController
   methods:
     - PUT
+
+delete-user:
+  path: /users/{uid}
+  controller: App\Controller\DeleteUserController
+  methods:
+    - DELETE
