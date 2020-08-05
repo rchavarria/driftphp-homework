@@ -4,6 +4,7 @@ namespace App\Controller;
 
 use Domain\Query\GetUser;
 use Drift\CommandBus\Bus\QueryBus;
+use React\Promise\PromiseInterface;
 use Symfony\Component\HttpFoundation\JsonResponse;
 use Symfony\Component\HttpFoundation\Request;
 
@@ -18,7 +19,7 @@ class GetUserController
         $this->queryBus = $queryBus;
     }
 
-    public function __invoke(Request $request)
+    public function __invoke(Request $request): PromiseInterface
     {
         $uid = $request->get('uid');
 
