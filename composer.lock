@@ -4,7 +4,7 @@
     "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#installing-dependencies",
     "This file is @generated automatically"
   ],
-  "content-hash": "e11d7a09ee2dfd08f18a53b819e45541",
+  "content-hash": "3160690d8312c762c8f00ba6b4ff6cde",
   "packages": [
     {
       "name": "alecrabbit/php-cli-snake",
@@ -15,16 +15,16 @@
         "reference": "d4aa6ab9880c708b6a35abb43f3113566ca71c38"
       },
       "dist": {
-                "type": "zip",
-                "url": "https://api.github.com/repos/alecrabbit/php-cli-snake/zipball/d4aa6ab9880c708b6a35abb43f3113566ca71c38",
-                "reference": "d4aa6ab9880c708b6a35abb43f3113566ca71c38",
-                "shasum": ""
-            },
-            "require": {
-                "php": ">=7.2"
-            },
-            "require-dev": {
-                "nunomaduro/collision": "^3.0",
+        "type": "zip",
+        "url": "https://api.github.com/repos/alecrabbit/php-cli-snake/zipball/d4aa6ab9880c708b6a35abb43f3113566ca71c38",
+        "reference": "d4aa6ab9880c708b6a35abb43f3113566ca71c38",
+        "shasum": ""
+      },
+      "require": {
+        "php": ">=7.2"
+      },
+      "require-dev": {
+        "nunomaduro/collision": "^3.0",
                 "phpunit/phpunit": "^8.0",
                 "react/event-loop": "^1.1",
                 "symfony/var-dumper": "^4.2"
@@ -199,8 +199,8 @@
             "description": "Lightweight library that eases integrating async components built for ReactPHP in a traditional, blocking environment.",
             "homepage": "https://github.com/clue/reactphp-block",
             "keywords": [
-                "async",
-                "await",
+              "async",
+              "await",
               "blocking",
               "event loop",
               "promise",
@@ -323,16 +323,16 @@
       "dist": {
         "type": "zip",
         "url": "https://api.github.com/repos/clue/php-stream-filter/zipball/5a58cc30a8bd6a4eb8f856adf61dd3e013f53f71",
-                "reference": "5a58cc30a8bd6a4eb8f856adf61dd3e013f53f71",
-                "shasum": ""
-            },
-            "require": {
-                "php": ">=5.3"
-            },
-            "require-dev": {
-                "phpunit/phpunit": "^5.0 || ^4.8"
-            },
-            "type": "library",
+        "reference": "5a58cc30a8bd6a4eb8f856adf61dd3e013f53f71",
+        "shasum": ""
+      },
+      "require": {
+        "php": ">=5.3"
+      },
+      "require-dev": {
+        "phpunit/phpunit": "^5.0 || ^4.8"
+      },
+      "type": "library",
             "autoload": {
                 "psr-4": {
                     "Clue\\StreamFilter\\": "src/"
@@ -409,11 +409,11 @@
             "description": "Streaming zlib compressor and decompressor for ReactPHP, supporting compression and decompression of GZIP, ZLIB and raw DEFLATE formats.",
             "homepage": "https://github.com/clue/reactphp-zlib",
             "keywords": [
-                "RFC 1950",
-                "RFC 1951",
-                "RFC 1952",
-                "compression",
-                "decompression",
+              "RFC 1950",
+              "RFC 1951",
+              "RFC 1952",
+              "compression",
+              "decompression",
               "deflate",
               "gz",
               "gzip",
@@ -686,16 +686,16 @@
       "dist": {
         "type": "zip",
         "url": "https://api.github.com/repos/doctrine/inflector/zipball/4650c8b30c753a76bf44fb2ed00117d6f367490c",
-                "reference": "4650c8b30c753a76bf44fb2ed00117d6f367490c",
-                "shasum": ""
-            },
-            "require": {
-                "php": "^7.2 || ^8.0"
-            },
-            "require-dev": {
-                "doctrine/coding-standard": "^7.0",
-                "phpstan/phpstan": "^0.11",
-                "phpstan/phpstan-phpunit": "^0.11",
+        "reference": "4650c8b30c753a76bf44fb2ed00117d6f367490c",
+        "shasum": ""
+      },
+      "require": {
+        "php": "^7.2 || ^8.0"
+      },
+      "require-dev": {
+        "doctrine/coding-standard": "^7.0",
+        "phpstan/phpstan": "^0.11",
+        "phpstan/phpstan-phpunit": "^0.11",
                 "phpstan/phpstan-strict-rules": "^0.11",
                 "phpunit/phpunit": "^7.0 || ^8.0 || ^9.0"
             },
@@ -883,16 +883,16 @@
                 "php": ">=7.3",
                 "symfony/console": "^5.0"
             },
-            "type": "library",
-            "autoload": {
-                "psr-4": {
-                    "Drift\\Console\\": "."
-                }
-            },
-            "notification-url": "https://packagist.org/downloads/",
-            "license": [
-                "MIT"
-            ],
+          "type": "library",
+          "autoload": {
+            "psr-4": {
+              "Drift\\Console\\": "."
+            }
+          },
+          "notification-url": "https://packagist.org/downloads/",
+          "license": [
+            "MIT"
+          ],
           "authors": [
             {
               "name": "Marc Morera",
@@ -1018,16 +1018,16 @@
       "dist": {
         "type": "zip",
         "url": "https://api.github.com/repos/driftphp/event-loop-utils/zipball/aeb7bf0b5cf397798fc6e872f808bc7325f77d90",
-                "reference": "aeb7bf0b5cf397798fc6e872f808bc7325f77d90",
-                "shasum": ""
-            },
-            "require": {
-                "clue/block-react": "^1.3",
-                "php": "^7.3",
-                "react/event-loop": "^1.1",
-                "react/promise": "^2.7"
-            },
-            "require-dev": {
+        "reference": "aeb7bf0b5cf397798fc6e872f808bc7325f77d90",
+        "shasum": ""
+      },
+      "require": {
+        "clue/block-react": "^1.3",
+        "php": "^7.3",
+        "react/event-loop": "^1.1",
+        "react/promise": "^2.7"
+      },
+      "require-dev": {
                 "phpunit/phpunit": "7.5.17"
             },
             "type": "library",
@@ -3034,26 +3034,72 @@
                 "event-driven",
                 "http",
                 "http client",
-                "http server",
-                "https",
-                "psr-7",
-                "reactphp",
-                "server",
-                "streaming"
+              "http server",
+              "https",
+              "psr-7",
+              "reactphp",
+              "server",
+              "streaming"
             ],
-            "time": "2020-07-11T13:29:43+00:00"
+          "time": "2020-07-11T13:29:43+00:00"
         },
-        {
-            "name": "react/promise",
-            "version": "v2.8.0",
-            "source": {
-                "type": "git",
-                "url": "https://github.com/reactphp/promise.git",
-                "reference": "f3cff96a19736714524ca0dd1d4130de73dbbbc4"
-            },
-            "dist": {
-                "type": "zip",
-                "url": "https://api.github.com/repos/reactphp/promise/zipball/f3cff96a19736714524ca0dd1d4130de73dbbbc4",
+    {
+      "name": "react/mysql",
+      "version": "v0.5.4",
+      "source": {
+        "type": "git",
+        "url": "https://github.com/friends-of-reactphp/mysql.git",
+        "reference": "c6daf35a494817d50298a29c858e3290b6db0e88"
+      },
+      "dist": {
+        "type": "zip",
+        "url": "https://api.github.com/repos/friends-of-reactphp/mysql/zipball/c6daf35a494817d50298a29c858e3290b6db0e88",
+        "reference": "c6daf35a494817d50298a29c858e3290b6db0e88",
+        "shasum": ""
+      },
+      "require": {
+        "evenement/evenement": "^3.0 || ^2.1 || ^1.1",
+        "php": ">=5.4.0",
+        "react/event-loop": "^1.0 || ^0.5",
+        "react/promise": "^2.7",
+        "react/promise-stream": "^1.1",
+        "react/promise-timer": "^1.5",
+        "react/socket": "^1.1"
+      },
+      "require-dev": {
+        "clue/block-react": "^1.2",
+        "phpunit/phpunit": "^7.0 || ^6.0 || ^5.0 || ^4.8.35"
+      },
+      "type": "library",
+      "autoload": {
+        "psr-4": {
+          "React\\MySQL\\": "src"
+        }
+      },
+      "notification-url": "https://packagist.org/downloads/",
+      "license": [
+        "MIT"
+      ],
+      "description": "Async MySQL database client for ReactPHP.",
+      "keywords": [
+        "async",
+        "database",
+        "mysql",
+        "reactphp"
+      ],
+      "time": "2019-05-21T08:55:16+00:00"
+    },
+    {
+      "name": "react/promise",
+      "version": "v2.8.0",
+      "source": {
+        "type": "git",
+        "url": "https://github.com/reactphp/promise.git",
+        "reference": "f3cff96a19736714524ca0dd1d4130de73dbbbc4"
+      },
+      "dist": {
+        "type": "zip",
+        "url": "https://api.github.com/repos/reactphp/promise/zipball/f3cff96a19736714524ca0dd1d4130de73dbbbc4",
                 "reference": "f3cff96a19736714524ca0dd1d4130de73dbbbc4",
                 "shasum": ""
             },
