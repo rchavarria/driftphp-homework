@@ -25,7 +25,8 @@
         "drift/event-loop-utils": "0.1.*",
 
         "drift/command-bus-bundle": "0.1.*",
-
+        "drift/dbal-bundle": "*",
+        "clue/reactphp-sqlite": "*",
         "drift/phpunit-bridge": "0.1.*"
     },
     "autoload": {
