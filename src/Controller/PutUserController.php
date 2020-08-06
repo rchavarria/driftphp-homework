@@ -3,8 +3,8 @@
 namespace App\Controller;
 
 use App\Controller\Transformer\UserTransformer;
+use App\Domain\Model\User\NameTooShortException;
 use Domain\Command\PutUser;
-use Domain\Model\User\User;
 use Drift\CommandBus\Bus\CommandBus;
 use React\Promise\PromiseInterface;
 use Symfony\Component\HttpFoundation\JsonResponse;
@@ -40,6 +40,9 @@ class PutUserController
             ->execute($command)
             ->then(function () {
                 return new JsonResponse('User will be saved', 202);
+            })
+            ->otherwise(function (NameTooShortException $e) {
+                return new JsonResponse('Name should be longer', 500);
             })
             ->otherwise(function (Throwable $t) {
                 return new JsonResponse('Error saving user', 500);

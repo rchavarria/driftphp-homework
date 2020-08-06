@@ -18,6 +18,7 @@ command_bus:
     middlewares:
       - Domain\Middleware\PutUserLogger
       - Domain\Middleware\DeleteUserLogger
+      - Domain\Middleware\CheckNameLength
 
 # config/services.yaml
 services:
