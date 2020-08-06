@@ -3,8 +3,8 @@
 namespace Test\Domain\Model\User;
 
 use App\Domain\Model\User\UserNotFoundException;
-use Domain\Model\User\InMemoryUserRepository;
 use Domain\Model\User\User;
+use Domain\Model\User\UserRepository;
 use PHPUnit\Framework\TestCase;
 use React\EventLoop\Factory;
 use React\EventLoop\LoopInterface;
@@ -19,11 +19,11 @@ abstract class UserRepositoryTest extends TestCase
         $this->loop = Factory::create();
     }
 
-    protected abstract function createRepository(): InMemoryUserRepository;
+    protected abstract function createRepository(LoopInterface $loop): UserRepository;
 
     public function testUserNotFound()
     {
-        $repository = $this->createRepository();
+        $repository = $this->createRepository($this->loop);
         $promise = $repository->find('user-uid');
 
         $this->expectException(UserNotFoundException::class);
@@ -32,7 +32,7 @@ abstract class UserRepositoryTest extends TestCase
 
     public function testGetUser()
     {
-        $repository = $this->createRepository();
+        $repository = $this->createRepository($this->loop);
         $user = new User('user-uid', 'user-name');
         $found = $repository
             ->save($user)
@@ -46,7 +46,7 @@ abstract class UserRepositoryTest extends TestCase
     public function testPutUserTwice()
     {
         $expectedUid = 'user-guid';
-        $repository = $this->createRepository();
+        $repository = $this->createRepository($this->loop);
         $user1 = new User($expectedUid, 'user-name-#1');
         $user2 = new User($expectedUid, 'user-name-#2');
 
@@ -63,7 +63,7 @@ abstract class UserRepositoryTest extends TestCase
     }
 
     public function testDeleteUser() {
-        $repository = $this->createRepository();
+        $repository = $this->createRepository($this->loop);
         $user = new User('user-uid', 'user-name');
         $promise = $repository
             ->save($user)
@@ -82,7 +82,7 @@ abstract class UserRepositoryTest extends TestCase
     {
         $this->expectNotToPerformAssertions();
 
-        $repository = $this->createRepository();
+        $repository = $this->createRepository($this->loop);
         await($repository->delete('user-uid'), $this->loop);
     }
 }

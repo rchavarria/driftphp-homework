@@ -18,12 +18,10 @@
         "symfony/dotenv": "^5.0.0",
         "symfony/stopwatch": "^5.0.0",
         "symfony/debug": "^4.4.0",
-
         "drift/http-kernel": "0.1.*, >=0.1.7",
         "drift/server": "0.1.*, >=0.1.7",
         "drift/react-functions": "0.1.*",
         "drift/event-loop-utils": "0.1.*",
-
         "drift/command-bus-bundle": "0.1.*",
         "drift/dbal-bundle": "*",
         "clue/reactphp-sqlite": "*",
@@ -35,8 +33,8 @@
             "Domain\\": "src/Domain",
             "Infrastructure\\": "src",
             "Drift\\": "Drift/",
-
-            "Test\\": "test/"
+            "Test\\": "test/",
+            "Test\\Infrastructure\\": "test/"
         }
     }
 }
