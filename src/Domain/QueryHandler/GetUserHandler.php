@@ -18,9 +18,6 @@ class GetUserHandler
 
     public function handle(GetUser $getUser): PromiseInterface
     {
-        $uid = $getUser->getUid();
-        echo "Searching user [$uid]", PHP_EOL;
-
         return $this->repository->find($getUser->getUid());
     }
 }

@@ -12,6 +12,8 @@ framework:
 
 command_bus:
   query_bus:
+    middlewares:
+      - Domain\Middleware\GetUserLogger
   command_bus:
     middlewares:
       - Domain\Middleware\PutUserLogger
