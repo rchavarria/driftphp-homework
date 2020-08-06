@@ -47,7 +47,16 @@ class DBALUserRepository implements UserRepository
 
     public function save(User $user): PromiseInterface
     {
-        // TODO: Implement save() method.
+        $ids = [
+            'uid' => $user->getUid()
+        ];
+        $columns = [
+            'name' => $user->getName()
+        ];
+
+        return $this
+            ->connection
+            ->upsert('users', $ids, $columns);
     }
 
     public function delete(string $uid): PromiseInterface
