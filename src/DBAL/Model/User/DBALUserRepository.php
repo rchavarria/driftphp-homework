@@ -2,9 +2,11 @@
 
 namespace Infrastructure\DBAL\Model\User;
 
+use App\Domain\Model\User\UserNotFoundException;
 use Domain\Model\User\User;
 use Domain\Model\User\UserRepository;
 use Drift\DBAL\Connection;
+use Drift\DBAL\Result;
 use React\Promise\PromiseInterface;
 
 class DBALUserRepository implements UserRepository
@@ -19,7 +21,28 @@ class DBALUserRepository implements UserRepository
 
     public function find(string $uid): PromiseInterface
     {
-        // TODO: Implement find() method.
+        $queryBuilder = $this
+            ->connection
+            ->createQueryBuilder()
+            ->select('*')
+            ->from('users')
+            ->where('uid = ?')
+            ->setParameters([$uid]);
+
+        return $this
+            ->connection
+            ->query($queryBuilder)
+            ->then(function (Result $result) {
+                $userAsArray = $result->fetchFirstRow();
+                if (is_null($userAsArray)) {
+                    throw new UserNotFoundException();
+                }
+
+                return new User(
+                    $userAsArray['uid'],
+                    $userAsArray['name']
+                );
+            });
     }
 
     public function save(User $user): PromiseInterface
