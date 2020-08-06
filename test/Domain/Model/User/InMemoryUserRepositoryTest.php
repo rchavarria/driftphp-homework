@@ -27,6 +27,18 @@ class InMemoryUserRepositoryTest extends TestCase
         $this->assertEquals($user, $found);
     }
 
+    public function testPutUserTwice() {
+        $expectedUid = 'user-guid';
+        $repository = $this->createRepository();
+        $user1 = new User($expectedUid, 'user-name');
+        $repository->save($user1);
+        $user2 = new User($expectedUid, 'user-name');
+        $repository->save($user2);
+
+        $found = $repository->find($expectedUid);
+        $this->assertEquals($user2, $found, 'Should be the latest saved user');
+    }
+
     private function createRepository(): InMemoryUserRepository
     {
         return new InMemoryUserRepository();
