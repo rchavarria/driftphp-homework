@@ -10,6 +10,12 @@ framework:
   php_errors:
     log: false
 
+command_bus:
+  query_bus:
+  command_bus:
+    middlewares:
+      - Domain\Middleware\PutUserLogger
+
 # config/services.yaml
 services:
   _defaults:
