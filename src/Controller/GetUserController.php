@@ -3,6 +3,7 @@
 namespace App\Controller;
 
 use App\Controller\Transformer\UserTransformer;
+use App\Domain\Model\User\UserNotFoundException;
 use Domain\Query\GetUser;
 use Drift\CommandBus\Bus\QueryBus;
 use React\Promise\PromiseInterface;
@@ -29,6 +30,9 @@ class GetUserController
             ->then(function ($user) {
                 $userAsArray = UserTransformer::toArray($user);
                 return new JsonResponse($userAsArray, 200);
+            })
+            ->otherwise(function (UserNotFoundException $e) {
+                return new JsonResponse('User not found', 404);
             });
     }
 
