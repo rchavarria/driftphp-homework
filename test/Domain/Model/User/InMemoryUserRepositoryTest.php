@@ -49,6 +49,14 @@ class InMemoryUserRepositoryTest extends TestCase
         $repository->find($user->getUid());
     }
 
+    public function testDeleteNonExistentUser()
+    {
+        $this->expectNotToPerformAssertions();
+
+        $repository = $this->createRepository();
+        $repository->delete('user-uid');
+    }
+
     private function createRepository(): InMemoryUserRepository
     {
         return new InMemoryUserRepository();
