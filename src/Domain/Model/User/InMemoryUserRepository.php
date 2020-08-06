@@ -2,13 +2,25 @@
 
 namespace Domain\Model\User;
 
-use Exception;
+use App\Domain\Model\User\UserNotFoundException;
 
 class InMemoryUserRepository
 {
 
+    /** @var array */
+    private $users;
+
     public function find(string $uid): User
     {
-        throw new Exception("User [$uid] not found");
+        if (!isset($this->users[$uid])) {
+            throw new UserNotFoundException("User [$uid] not found");
+        }
+
+        return $this->users[$uid];
+    }
+
+    public function save(User $user): void
+    {
+        $this->users[$user->getUid()] = $user;
     }
 }
