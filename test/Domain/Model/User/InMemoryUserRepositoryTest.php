@@ -6,47 +6,74 @@ use App\Domain\Model\User\UserNotFoundException;
 use Domain\Model\User\InMemoryUserRepository;
 use Domain\Model\User\User;
 use PHPUnit\Framework\TestCase;
+use React\EventLoop\Factory;
+use React\EventLoop\LoopInterface;
+use function Clue\React\Block\await;
 
 class InMemoryUserRepositoryTest extends TestCase
 {
+    /** @var LoopInterface */
+    private $loop;
+
+    public function setUp() {
+        $this->loop = Factory::create();
+    }
+
     public function testUserNotFound()
     {
         $repository = $this->createRepository();
+        $promise = $repository->find('user-uid');
+
         $this->expectException(UserNotFoundException::class);
-        $repository->find('user-uid');
+        await($promise, $this->loop);
     }
 
     public function testGetUser()
     {
         $repository = $this->createRepository();
         $user = new User('user-uid', 'user-name');
-        $repository->save($user);
+        $found = $repository
+            ->save($user)
+            ->then(function () use ($repository, $user) {
+                return $repository->find($user->getUid());
+            });
 
-        $found = $repository->find($user->getUid());
-        $this->assertEquals($user, $found);
+        $this->assertEquals($user, await($found, $this->loop));
     }
 
     public function testPutUserTwice()
     {
         $expectedUid = 'user-guid';
         $repository = $this->createRepository();
-        $user1 = new User($expectedUid, 'user-name');
-        $repository->save($user1);
-        $user2 = new User($expectedUid, 'user-name');
-        $repository->save($user2);
+        $user1 = new User($expectedUid, 'user-name-#1');
+        $user2 = new User($expectedUid, 'user-name-#2');
 
-        $found = $repository->find($expectedUid);
-        $this->assertEquals($user2, $found, 'Should be the latest saved user');
+        $found = $repository
+            ->save($user1)
+            ->then(function () use ($repository, $expectedUid, $user2) {
+                return $repository->save($user2);
+            })
+            ->then(function () use ($repository, $expectedUid) {
+                return $repository->find($expectedUid);
+            });
+
+        $this->assertEquals($user2, await($found, $this->loop), 'Should be the latest saved user');
     }
 
     public function testDeleteUser() {
         $repository = $this->createRepository();
         $user = new User('user-uid', 'user-name');
-        $repository->save($user);
-        $repository->delete($user->getUid());
+        $promise = $repository
+            ->save($user)
+            ->then(function () use ($repository, $user) {
+                return $repository->delete($user->getUid());
+            })
+            ->then(function () use ($repository, $user) {
+                return $repository->find($user->getUid());
+            });
 
         $this->expectException(UserNotFoundException::class);
-        $repository->find($user->getUid());
+        await($promise, $this->loop);
     }
 
     public function testDeleteNonExistentUser()
@@ -54,7 +81,7 @@ class InMemoryUserRepositoryTest extends TestCase
         $this->expectNotToPerformAssertions();
 
         $repository = $this->createRepository();
-        $repository->delete('user-uid');
+        await($repository->delete('user-uid'), $this->loop);
     }
 
     private function createRepository(): InMemoryUserRepository
