@@ -61,6 +61,8 @@ class DBALUserRepository implements UserRepository
 
     public function delete(string $uid): PromiseInterface
     {
-        // TODO: Implement delete() method.
+        return $this
+            ->connection
+            ->delete('users', ['uid' => $uid]);
     }
 }
