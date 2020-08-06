@@ -5,7 +5,6 @@ namespace Test\Domain\Model\User;
 use App\Domain\Model\User\UserNotFoundException;
 use Domain\Model\User\InMemoryUserRepository;
 use Domain\Model\User\User;
-use Exception;
 use PHPUnit\Framework\TestCase;
 
 class InMemoryUserRepositoryTest extends TestCase
@@ -27,7 +26,8 @@ class InMemoryUserRepositoryTest extends TestCase
         $this->assertEquals($user, $found);
     }
 
-    public function testPutUserTwice() {
+    public function testPutUserTwice()
+    {
         $expectedUid = 'user-guid';
         $repository = $this->createRepository();
         $user1 = new User($expectedUid, 'user-name');
@@ -37,6 +37,16 @@ class InMemoryUserRepositoryTest extends TestCase
 
         $found = $repository->find($expectedUid);
         $this->assertEquals($user2, $found, 'Should be the latest saved user');
+    }
+
+    public function testDeleteUser() {
+        $repository = $this->createRepository();
+        $user = new User('user-uid', 'user-name');
+        $repository->save($user);
+        $repository->delete($user->getUid());
+
+        $this->expectException(UserNotFoundException::class);
+        $repository->find($user->getUid());
     }
 
     private function createRepository(): InMemoryUserRepository

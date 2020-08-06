@@ -23,4 +23,9 @@ class InMemoryUserRepository
     {
         $this->users[$user->getUid()] = $user;
     }
+
+    public function delete(string $uid): void
+    {
+        unset($this->users[$uid]);
+    }
 }
