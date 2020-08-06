@@ -3,11 +3,19 @@
 namespace Domain\CommandHandler;
 
 use Domain\Command\PutUser;
+use Domain\Model\User\UserRepository;
 use React\Promise\PromiseInterface;
-use function React\Promise\resolve;
 
 class PutUserHandler
 {
+
+    /** @var UserRepository */
+    private $repository;
+
+    public function __construct(UserRepository $repository)
+    {
+        $this->repository = $repository;
+    }
 
     public function handle(PutUser $putUser): PromiseInterface
     {
@@ -15,6 +23,6 @@ class PutUserHandler
         $name = $putUser->getUser()->getName();
         echo "User [$uid] with name [$name] will be saved", PHP_EOL;
 
-        return resolve();
+        return $this->repository->save($putUser->getUser());
     }
 }

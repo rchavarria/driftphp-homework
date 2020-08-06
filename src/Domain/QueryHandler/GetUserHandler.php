@@ -2,19 +2,25 @@
 
 namespace Domain\QueryHandler;
 
+use Domain\Model\User\UserRepository;
 use Domain\Query\GetUser;
-use Domain\Model\User\User;
 use React\Promise\PromiseInterface;
-use function React\Promise\resolve;
 
 class GetUserHandler
 {
+    /** @var UserRepository */
+    private $repository;
+
+    public function __construct(UserRepository $repository)
+    {
+        $this->repository = $repository;
+    }
 
     public function handle(GetUser $getUser): PromiseInterface
     {
         $uid = $getUser->getUid();
         echo "Searching user [$uid]", PHP_EOL;
 
-        return resolve(new User($uid, 'Fulanito'));
+        return $this->repository->find($getUser->getUid());
     }
 }
