@@ -20,6 +20,16 @@ command_bus:
       - Domain\Middleware\DeleteUserLogger
       - Domain\Middleware\CheckNameLength
 
+dbal:
+  connections:
+    main:
+      driver: mysql
+      host: 192.168.1.143
+      port: 3306
+      user: root
+      password: root
+      dbname: usersdb
+
 # config/services.yaml
 services:
   _defaults:
