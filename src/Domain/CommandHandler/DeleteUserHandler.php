@@ -18,9 +18,6 @@ class DeleteUserHandler
 
     public function handle(DeleteUser $deleteUser): PromiseInterface
     {
-        $uid = $deleteUser->getUid();
-        echo "User [$uid] will be deleted", PHP_EOL;
-
         return $this->repository->delete($deleteUser->getUid());
     }
 }

@@ -15,6 +15,7 @@ command_bus:
   command_bus:
     middlewares:
       - Domain\Middleware\PutUserLogger
+      - Domain\Middleware\DeleteUserLogger
 
 # config/services.yaml
 services:
