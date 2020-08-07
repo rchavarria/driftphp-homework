@@ -25,6 +25,7 @@
         "drift/command-bus-bundle": "0.1.*",
         "drift/dbal-bundle": "*",
         "react/mysql": "*",
+        "drift/event-bus-bundle": "*",
         "clue/reactphp-sqlite": "*",
         "drift/phpunit-bridge": "0.1.*"
     },
