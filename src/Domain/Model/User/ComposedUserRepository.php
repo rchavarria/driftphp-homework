@@ -2,7 +2,9 @@
 
 namespace Domain\Model\User;
 
+use App\Domain\Event\UserWasDeleted;
 use Domain\Event\UserWasSaved;
+use Drift\HttpKernel\AsyncKernelEvents;
 use React\Promise\PromiseInterface;
 use Symfony\Component\EventDispatcher\EventSubscriberInterface;
 
@@ -53,6 +55,12 @@ class ComposedUserRepository implements UserRepository, EventSubscriberInterface
     {
         return [
             UserWasSaved::class => [
+                ['loadAllUsersToMemory', 0]
+            ],
+            UserWasDeleted::class => [
+                ['loadAllUsersToMemory', 0]
+            ],
+            AsyncKernelEvents::PRELOAD => [
                 ['loadAllUsersToMemory', 0]
             ]
         ];
