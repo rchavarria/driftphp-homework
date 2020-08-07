@@ -3,13 +3,13 @@
 namespace Infrastructure\DBAL\Model\User;
 
 use App\Domain\Model\User\UserNotFoundException;
+use Domain\Model\User\PersistentUserRepository;
 use Domain\Model\User\User;
-use Domain\Model\User\UserRepository;
 use Drift\DBAL\Connection;
 use Drift\DBAL\Result;
 use React\Promise\PromiseInterface;
 
-class DBALUserRepository implements UserRepository
+class DBALUserRepository implements PersistentUserRepository
 {
     /** @var Connection */
     private $connection;
