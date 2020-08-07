@@ -76,7 +76,12 @@ services:
   # UserRepository implementations
   #
   Infrastructure\DBAL\Model\User\DBALUserRepository:
+  Domain\Model\User\ComposedUserRepository:
   Domain\Model\User\InMemoryUserRepository:
   Domain\Model\User\UserRepository:
     #    alias: Domain\Model\User\InMemoryUserRepository
+    #    alias: Infrastructure\DBAL\Model\User\DBALUserRepository
+    alias: Domain\Model\User\ComposedUserRepository
+
+  Domain\Model\User\PersistentUserRepository:
     alias: Infrastructure\DBAL\Model\User\DBALUserRepository
