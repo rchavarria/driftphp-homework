@@ -2,9 +2,11 @@
 
 namespace Domain\Model\User;
 
+use Domain\Event\UserWasSaved;
 use React\Promise\PromiseInterface;
+use Symfony\Component\EventDispatcher\EventSubscriberInterface;
 
-class ComposedUserRepository implements UserRepository
+class ComposedUserRepository implements UserRepository, EventSubscriberInterface
 {
 
     /** @var InMemoryUserRepository */
@@ -31,5 +33,28 @@ class ComposedUserRepository implements UserRepository
     public function delete(string $uid): PromiseInterface
     {
         return $this->persistent->delete($uid);
+    }
+
+    public function loadAllUsersToMemory(): void
+    {
+        echo '*** load all users into memory', PHP_EOL;
+
+        $this
+            ->persistent
+            ->findAll()
+            ->then(function ($users) {
+                $this
+                    ->memory
+                    ->loadAllFromArray($users);
+            });
+    }
+
+    public static function getSubscribedEvents()
+    {
+        return [
+            UserWasSaved::class => [
+                ['loadAllUsersToMemory', 0]
+            ]
+        ];
     }
 }

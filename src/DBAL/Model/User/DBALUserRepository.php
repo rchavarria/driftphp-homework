@@ -65,4 +65,29 @@ class DBALUserRepository implements PersistentUserRepository
             ->connection
             ->delete('users', ['uid' => $uid]);
     }
+
+    public function findAll(): PromiseInterface
+    {
+        $queryBuilder = $this
+            ->connection
+            ->createQueryBuilder()
+            ->select('*')
+            ->from('users');
+
+        return $this
+            ->connection
+            ->query($queryBuilder)
+            ->then(function (Result $result) {
+                $usersAsArray = $result->fetchAllRows();
+
+                $users = [];
+                foreach ($usersAsArray as $userAsArray) {
+                    $uid = $userAsArray['uid'];
+                    $name = $userAsArray['name'];
+                    $users[$uid] = new User($uid, $name);
+                }
+
+                return $users;
+            });
+    }
 }

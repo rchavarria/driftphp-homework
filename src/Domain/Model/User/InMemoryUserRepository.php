@@ -33,4 +33,9 @@ class InMemoryUserRepository implements UserRepository
         unset($this->users[$uid]);
         return resolve();
     }
+
+    public function loadAllFromArray(array $users): void
+    {
+        $this->users = $users;
+    }
 }
