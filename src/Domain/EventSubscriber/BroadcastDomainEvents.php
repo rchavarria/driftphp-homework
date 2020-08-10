@@ -1,6 +1,6 @@
 <?php
 
-namespace App\Domain\EventSubscriber;
+namespace Domain\EventSubscriber;
 
 use Domain\Event\UserWasSaved;
 use Drift\HttpKernel\Event\DomainEventEnvelope;
