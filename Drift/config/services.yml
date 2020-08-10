@@ -41,6 +41,12 @@ event_bus:
     amqp:
       host: 192.168.1.143
 
+websocket:
+  routes:
+    events:
+      path: /events
+
+
 # config/services.yaml
 services:
   _defaults:
