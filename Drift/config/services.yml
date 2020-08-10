@@ -91,3 +91,9 @@ services:
 
   Domain\Model\User\PersistentUserRepository:
     alias: Infrastructure\DBAL\Model\User\DBALUserRepository
+
+  #
+  # Broadcasters
+  #
+  Domain\EventSubscriber\:
+    resource: "%app_path%/src/Domain/EventSubscriber/*"
