@@ -4,8 +4,9 @@ namespace Domain\EventSubscriber;
 
 use Drift\Websocket\Connection\Connection;
 use Drift\Websocket\Event\WebsocketConnectionOpened;
+use Symfony\Component\EventDispatcher\EventSubscriberInterface;
 
-class BroadcastNewConnection
+class BroadcastNewConnection implements EventSubscriberInterface
 {
 
     public final function broadcastNewConnection(WebsocketConnectionOpened $event): void
