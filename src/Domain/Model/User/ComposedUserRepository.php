@@ -2,7 +2,7 @@
 
 namespace Domain\Model\User;
 
-use App\Domain\Event\UserWasDeleted;
+use Domain\Event\UserWasDeleted;
 use Domain\Event\UserWasSaved;
 use Drift\HttpKernel\AsyncKernelEvents;
 use React\Promise\PromiseInterface;

@@ -2,7 +2,7 @@
 
 namespace Domain\EventSubscriber;
 
-use App\Domain\Event\UserWasDeleted;
+use Domain\Event\UserWasDeleted;
 use Domain\Event\UserWasSaved;
 use Drift\HttpKernel\Event\DomainEventEnvelope;
 use Drift\Websocket\Connection\Connections;

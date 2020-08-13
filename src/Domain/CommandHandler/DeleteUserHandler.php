@@ -2,8 +2,8 @@
 
 namespace Domain\CommandHandler;
 
-use App\Domain\Event\UserWasDeleted;
 use Domain\Command\DeleteUser;
+use Domain\Event\UserWasDeleted;
 use Domain\Model\User\UserRepository;
 use Drift\EventBus\Bus\EventBus;
 use React\Promise\PromiseInterface;
