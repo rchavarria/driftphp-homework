@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Log de eventos de dominio</title>
+    <link rel="stylesheet"
+          href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css"
+          integrity="sha384-JcKb8q3iqJ61gNV9KGb8thSsNjpSL0n8PARn9HuZOnIxN0hoP+VmmDGMN5t9UJ0Z"
+          crossorigin="anonymous">
+<body>
+
+<div class="container">
+    <div class="row">
+        <div class="col-md-10 offset-md-1">
+            <div class="row">
+                <div class="page-header">
+                    <h1>Eventos de Dominio <small>DriftPHP = ReactPHP + Symfony</small></h1>
+                </div>
+            </div>
+
+            <div class="row">
+                <!--usuarios del dominio-->
+                <div class="col-md-4 offset-md-1">
+                    <div class="card" style="width: 18rem;">
+                        <div class="card-header">
+                            Usuarios del Dominio
+                        </div>
+                        <ul id="users" class="list-group list-group-flush">
+                        </ul>
+                    </div>
+                </div>
+
+                <!--eventos del dominio-->
+                <div class="col-md-4 offset-md-2">
+                    <div class="card" style="width: 18rem;">
+                        <div class="card-header">
+                            Eventos del Dominio
+                        </div>
+                        <ul id="events" class="list-group list-group-flush">
+                        </ul>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<script src="js/events.js"></script>
+</body>
+</html>
