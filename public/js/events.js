@@ -20,13 +20,25 @@
         $events.prepend(li);
     }
 
-    function onUserWasSaved(event) {
-        const li = document.createElement('li');
-        li.setAttribute('id', event.uid);
-        li.setAttribute('class', 'list-group-item');
-        li.innerHTML = event.uid + ': ' + event.name;
+    function updateUserRow($user, event) {
+        $user.setAttribute('id', event.uid);
+        $user.setAttribute('class', 'list-group-item');
+        $user.innerHTML = event.uid + ': ' + event.name;
+        return $user;
+    }
 
+    function createSavedUser(event) {
+        const li = updateUserRow(document.createElement('li'), event);
         $users.append(li);
+    }
+
+    function onUserWasSaved(event) {
+        const li = document.getElementById(event.uid);
+        if (li) {
+            updateUserRow(li, event);
+        } else {
+            createSavedUser(event);
+        }
     }
 
     function onUserWasDeleted(event) {
