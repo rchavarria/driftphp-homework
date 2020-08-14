@@ -1,0 +1,35 @@
+version: '3'
+
+services:
+
+  server-8000:
+    image: "driftphp/base"
+    volumes:
+      - ..:/var/www
+    ports:
+      - "8000:8000"
+    command: "php vendor/bin/server watch 0.0.0.0:8000 --exchange my_events"
+
+  server-8001:
+    image: "driftphp/base"
+    volumes:
+      - ..:/var/www
+    ports:
+      - "8001:8000"
+    command: "php vendor/bin/server watch 0.0.0.0:8000 --exchange my_events"
+
+  server-8002:
+    image: "driftphp/base"
+    volumes:
+      - ..:/var/www
+    ports:
+      - "8002:8000"
+    command: "php vendor/bin/server watch 0.0.0.0:8000 --exchange my_events"
+
+  server-wbs:
+    image: "driftphp/base"
+    volumes:
+      - ..:/var/www
+    ports:
+      - "1234:1234"
+    command: "php bin/console websocket:run localhost:1234 --route events --exchange my_events"

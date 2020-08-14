@@ -26,3 +26,17 @@ docker-compose -f docker/docker-compose-infra.yml up
 ```
 
 ## Servidores
+
+De forma similar a la infraestructura:
+
+Levantar los server:
+
+```
+docker-compose -f docker/docker-compose-servers.yml up
+```
+
+Pararlos:
+
+```
+docker-compose -f docker/docker-compose-servers.yml up
+```

@@ -4,7 +4,7 @@
     //
     // configuration
     //
-    const wsUrl = 'ws://localhost:9009/events';
+    const wsUrl = 'ws://localhost:1234/events';
 
     //
     // get element to manipulate
