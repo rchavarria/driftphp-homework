@@ -46,6 +46,10 @@
         li.remove();
     }
 
+    function onNewConnection(event) {
+        event.users.forEach(user => createSavedUser(user));
+    }
+
     function onWsMessage(messageEvent) {
         const event = JSON.parse(messageEvent.data);
         onAnyEvent(event);
@@ -56,6 +60,9 @@
                 break;
             case 'Domain\\Event\\UserWasDeleted':
                 onUserWasDeleted(event);
+                break;
+            case 'new-connection':
+                onNewConnection(event);
                 break;
         }
     }
