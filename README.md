@@ -5,26 +5,24 @@ en ese momento
 - Cuando haya una petición de guardar un usuario que ya existe, en el cliente de
 WS, buscar si ya existe y reemplazar ese elemento con el nuevo usuario
 
-# DriftPHP Skeleton
+# Cómo ejecutar el proyecto
 
-Welcome to the skeleton of DriftPHP. In this small repository you will find an
-extraordinary way of starting using DriftPHP and ReactPHP in your projects. Just
-install it, load dependencies, and you will be ready to start building fast and
-insane applications on top of Symfony and ReactPHP components.
+## Instalar dependencias
 
-<p align="center">
-  <img src="public/driftphp.png">
-</p>
+## Infrastructura
 
-Some first steps for you!
+Levantar la infraestructura:
 
-- [Go to DOCS](https://driftphp.io)
-- [Try a demo](https://github.com/driftphp/demo)
+```
+docker-compose -f docker/docker-compose-infra.yml up
+```
 
-you can check out packages as well.
+Es necesario crear el *exchange* de RabbitMQ a mano, lo siento.
 
-- [DBAL adapter](https://github.com/driftphp/dbal-bundle)
-- [Redis adapter](https://github.com/driftphp/redis-bundle)
-- [Twig adapter](https://github.com/driftphp/twig-bundle)
-- [AMQP adapter](https://github.com/driftphp/amqp-bundle)
-- [Websockets adapter](https://github.com/driftphp/websocket-bundle)
+Pararla:
+
+```
+docker-compose -f docker/docker-compose-infra.yml up
+```
+
+## Servidores
