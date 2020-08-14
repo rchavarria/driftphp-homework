@@ -1,3 +1,10 @@
+# TODO
+
+- Cuando se conecte un cliente al WS reciba todos los usuarios en el sistema
+en ese momento
+- Cuando haya una petición de guardar un usuario que ya existe, en el cliente de
+WS, buscar si ya existe y reemplazar ese elemento con el nuevo usuario
+
 # DriftPHP Skeleton
 
 Welcome to the skeleton of DriftPHP. In this small repository you will find an
