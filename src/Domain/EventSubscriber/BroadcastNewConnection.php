@@ -2,25 +2,26 @@
 
 namespace Domain\EventSubscriber;
 
+use Domain\Model\User\PersistentUserRepository;
+use Domain\Model\User\User;
 use Drift\Websocket\Connection\Connection;
 use Drift\Websocket\Event\WebsocketConnectionOpened;
+use React\Promise\PromiseInterface;
 use Symfony\Component\EventDispatcher\EventSubscriberInterface;
 
 class BroadcastNewConnection implements EventSubscriberInterface
 {
 
-    public final function broadcastNewConnection(WebsocketConnectionOpened $event): void
+    /** @var PersistentUserRepository */
+    private $repository;
+
+    /**
+     * BroadcastNewConnection constructor.
+     * @param PersistentUserRepository $repository
+     */
+    public function __construct(PersistentUserRepository $repository)
     {
-        $hash = Connection::getConnectionHash($event->getNewConnection());
-
-        echo '* broadcast new connection: ', $hash, PHP_EOL;
-
-        $event
-            ->getConnections()
-            ->broadcast(json_encode([
-                'type' => 'new-connection',
-                'connection' => $hash
-            ]));
+        $this->repository = $repository;
     }
 
     public static function getSubscribedEvents()
@@ -30,5 +31,42 @@ class BroadcastNewConnection implements EventSubscriberInterface
                 ['broadcastNewConnection', 0]
             ]
         ];
+    }
+
+    public final function broadcastNewConnection(WebsocketConnectionOpened $event): void
+    {
+        $this
+            ->listUsers()
+            ->then(function ($users) use ($event) {
+                $hash = Connection::getConnectionHash($event->getNewConnection());
+                echo '* broadcast new connection: ', $hash, ' with ', count($users), ' users', PHP_EOL;
+
+                $event
+                    ->getConnections()
+                    ->broadcast(json_encode([
+                        'type' => 'new-connection',
+                        'connection' => $hash,
+                        'users' => $users
+                    ]));
+            });
+    }
+
+    /**
+     * @return PromiseInterface
+     */
+    private function listUsers(): PromiseInterface
+    {
+        return $this
+            ->repository
+            ->findAll()
+            ->then(function (array $usersByUid) {
+                $userValues = array_values($usersByUid);
+                return array_map(function (User $user) {
+                    return [
+                        'uid' => $user->getUid(),
+                        'name' => $user->getName()
+                    ];
+                }, $userValues);
+            });
     }
 }
