@@ -1,8 +1,16 @@
 # Cómo ejecutar el proyecto
 
-## Instalar dependencias
+# Deberes del curso sobre DriftPHP, CQRS y Event sourcing
 
-## Infrastructura
+## Cómo ejecutar el proyecto
+
+### Instalar dependencias
+
+`composer install` o `composer update`
+
+Hay un script, `bin/composer.sh` que te ayuda si ejecutas todo en contenedores docker.
+
+### Infrastructura
 
 Levantar la infraestructura:
 
@@ -18,7 +26,7 @@ Pararla:
 docker-compose -f docker/docker-compose-infra.yml up
 ```
 
-## Servidores
+### Servidores
 
 De forma similar a la infraestructura:
 
