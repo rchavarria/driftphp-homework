@@ -4,6 +4,11 @@
 
 ## Cómo ejecutar el proyecto
 
+1. Instalar dependencias
+2. Levantar la infraestructura
+3. Crear base de datos y tabla `users` en MySQL y exchange en RabbitMQ
+4. Levantar servidores
+
 ### Instalar dependencias
 
 `composer install` o `composer update`
