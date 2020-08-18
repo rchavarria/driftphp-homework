@@ -28,8 +28,20 @@ Es necesario crear el *exchange* de RabbitMQ a mano, lo siento.
 Pararla:
 
 ```
-docker-compose -f docker/docker-compose-infra.yml up
+docker-compose -f docker/docker-compose-infra.yml down
 ```
+
+### Configuración de los servicios
+
+Como la infraestructura (MySQL y RabbitMQ) y los servidores se ejecutan en docker-compose distintos, hay que utilizar
+una dirección IP del *host*, del PC que ejecuta los contenedores.
+
+Lo más seguro es que tengas que modificar `/Drift/config/services.yml`:
+
+- `dbal/conections/main/host`
+- `event_bus/async_adapter/amqp/host`
+
+Si estas direcciones no están bien configuradas, tendremos errores de: no se puede conectar, time outs,...
 
 ### Creación de tablas y exchanges
 
@@ -57,5 +69,5 @@ docker-compose -f docker/docker-compose-servers.yml up
 Pararlos:
 
 ```
-docker-compose -f docker/docker-compose-servers.yml up
+docker-compose -f docker/docker-compose-servers.yml down
 ```
