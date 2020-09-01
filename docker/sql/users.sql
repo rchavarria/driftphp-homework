@@ -11,5 +11,6 @@ create table users
     name varchar(255)           not null
 );
 
+-- initial users
 insert into users (uid, name)
 values ('plnctn', 'Plancton, el origen');
