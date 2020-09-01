@@ -13,7 +13,7 @@
 
 Hay un script, `bin/composer.sh` que te ayuda si ejecutas todo en contenedores docker.
 
-### Infrastructura
+### Infraestructura
 
 Levantar la infraestructura:
 
@@ -32,11 +32,21 @@ docker-compose -f docker/docker-compose-infra.yml down
 Como la infraestructura (MySQL y RabbitMQ) y los servidores se ejecutan en docker-compose distintos, hay que utilizar
 una dirección IP del *host*, del PC que ejecuta los contenedores.
 
-Lo más seguro es que tengas que modificar `/Drift/config/services.yml`:
+Seguramente, tendrás que modificar al menos un parámetro de configuración. En el archivo
+`Drift/config/services.yml`, deberás modificar `parameters/host_address`, al inicio del
+archivo:
 
-- `dbal/conections/main/host`
-- `event_bus/async_adapter/amqp/host`
+```yaml
+parameters:
+  # ...
+  host_address: 192.168.1.143
 
+#...
+```
+
+Como valor debes poner una dirección IP que sea accesible desde los contenedores docker y
+desde la máquina que ejecuta los contenedores. La dirección privada de tu red local debería
+ser válido. Esta dirección IP se utiliza por ejemplo para conectar a la base de datos.
 Si estas direcciones no están bien configuradas, tendremos errores de: no se puede conectar, time outs,...
 
 ### Creación de tablas y exchanges

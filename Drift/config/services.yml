@@ -1,6 +1,11 @@
 parameters:
   kernel.secret: yoursecretshouldbehere
   app_path: "../.."
+  #
+  # Añado esta "variable" para no tener que modificar en varios sitios
+  # la dirección IP de la máquina de desarrollo en local
+  #
+  host_address: 192.168.1.143
 
 framework:
   form: false
@@ -24,7 +29,7 @@ dbal:
   connections:
     main:
       driver: mysql
-      host: 192.168.1.143
+      host: "%host_address%"
       port: 3306
       user: root
       password: root
@@ -39,7 +44,7 @@ event_bus:
   async_adapter:
     adapter: amqp
     amqp:
-      host: 192.168.1.143
+      host: "%host_address%"
 
 websocket:
   routes:
