@@ -34,8 +34,14 @@ class InMemoryUserRepository implements UserRepository
         return resolve();
     }
 
+    /**
+     * @param User[] $users
+     */
     public function loadAllFromArray(array $users): void
     {
-        $this->users = $users;
+        $this->users = [];
+        foreach ($users as $user) {
+            $this->users[$user->getUid()] = $user;
+        }
     }
 }

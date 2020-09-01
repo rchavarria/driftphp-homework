@@ -82,9 +82,10 @@ class DBALUserRepository implements PersistentUserRepository
 
                 $users = [];
                 foreach ($usersAsArray as $userAsArray) {
-                    $uid = $userAsArray['uid'];
-                    $name = $userAsArray['name'];
-                    $users[$uid] = new User($uid, $name);
+                    $users[] = new User(
+                        $userAsArray['uid'],
+                        $userAsArray['name']
+                    );
                 }
 
                 return $users;

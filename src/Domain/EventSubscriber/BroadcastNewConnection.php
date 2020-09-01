@@ -59,14 +59,13 @@ class BroadcastNewConnection implements EventSubscriberInterface
         return $this
             ->repository
             ->findAll()
-            ->then(function (array $usersByUid) {
-                $userValues = array_values($usersByUid);
+            ->then(function (array $users) {
                 return array_map(function (User $user) {
                     return [
                         'uid' => $user->getUid(),
                         'name' => $user->getName()
                     ];
-                }, $userValues);
+                }, $users);
             });
     }
 }
