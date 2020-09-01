@@ -1,5 +1,3 @@
-# Cómo ejecutar el proyecto
-
 # Deberes del curso sobre DriftPHP, CQRS y Event sourcing
 
 ## Cómo ejecutar el proyecto
@@ -22,8 +20,6 @@ Levantar la infraestructura:
 ```
 docker-compose -f docker/docker-compose-infra.yml up
 ```
-
-Es necesario crear el *exchange* de RabbitMQ a mano, lo siento.
 
 Pararla:
 
@@ -71,3 +67,16 @@ Pararlos:
 ```
 docker-compose -f docker/docker-compose-servers.yml down
 ```
+
+### Haciendo llamadas a los servers
+
+Para ayudar a testear el código que estamos desarrollando, existen unos scripts
+que hacen llamadas a los diferentes servidores, de forma que se automatiza la
+creación/modificación/borrado de usuarios:
+
+- `bin/integration-tests.sh`: prueba todas las peticiones al server (get, put, delete)
+- `bin/save-all-users.sh`: crea 5 usuarios
+- `bin/delete-all-users.sh`: borra los 5 usuarios
+- `bin/save-and-modify-users.sh`: crea algunos usuarios y los modifica
+- `bin/integration-tests-all-servers.sh`: pruebas locas con todos los servers, todos
+los tipos de peticiones,...
