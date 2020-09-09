@@ -1,11 +1,17 @@
 # Deberes del curso sobre DriftPHP, CQRS y Event sourcing
 
+Puesta en práctica sobre el curso [DriftPHP, CQRS y Event sourcing](https://php.coach)
+impartido por [Marc Morera](https://mmoreram.com)
+
 ## Cómo ejecutar el proyecto
 
 1. Instalar dependencias
 2. Levantar la infraestructura
-3. Crear base de datos y tabla `users` en MySQL y exchange en RabbitMQ
-4. Levantar servidores
+3. Configurar los servicios
+4. Crear base de datos y tabla `users` en MySQL y exchange en RabbitMQ
+5. Levantar servidores
+6. Monitorizar eventos y usuarios
+7. Usar el sistema
 
 ### Instalar dependencias
 
