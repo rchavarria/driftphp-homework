@@ -78,6 +78,13 @@ Pararlos:
 docker-compose -f docker/docker-compose-servers.yml down
 ```
 
+### Monitorizando los eventos y usuarios
+
+Es posible ver el los usuarios del sistema y los Eventos de Dominio que se envían por el bus en tiempo real.
+Para ello, abre el fichero `public/index.html` en un navegador y disfruta.
+
+Para ver los eventos, tendrás que hacer llamadas a los servers, sigue leyendo.
+
 ### Haciendo llamadas a los servers
 
 Para ayudar a testear el código que estamos desarrollando, existen unos scripts
